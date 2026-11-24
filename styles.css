@@ -23,15 +23,17 @@ nav a {
     margin-right: 15px;
 }
 
-main {
-    width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
+main { 
+    width: 90%; 
+    max-width: 900px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background: white; 
 }
 
-img {
-    width: 300px;
+img { 
+    max-width: 100%; 
+    height: auto; 
 }
 
 table {
@@ -47,11 +49,11 @@ label {
     display: block;
 }
 
-input,
-select,
-textarea {
-    width: 400px;
-    margin-bottom: 10px;
+input, select, textarea { 
+    width: 100%; 
+    max-width: 400px; 
+    padding: 8px; 
+    margin-bottom: 10px; 
 }
 
 textarea {
@@ -61,11 +63,26 @@ textarea {
 button {
     background: #14365d;
     color: white;
-    padding: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
 footer {
-    width: 900px;
+    width: 90%; 
+    max-width: 900px; 
     margin: auto;
     font-size: 12px;
+    padding-bottom: 20px;
+}
+
+/* Keyboard focus outline */
+a:focus, input:focus, select:focus, textarea:focus, button:focus {
+    outline: 3px solid #ffbf47; 
+}
+
+fieldset { 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    max-width: 400px;
 }

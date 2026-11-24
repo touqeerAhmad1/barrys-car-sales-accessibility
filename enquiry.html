@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vehicle Enquiry - Barry's Car Sales</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
@@ -18,64 +19,75 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="enquiry.html">Enquiry</a>
+        <a href="enquiry.html">Contact</a>
     </nav>
 </header>
 
 <main>
     <h2>Vehicle enquiry</h2>
     <p>Complete the form below and a member of our team will contact you.</p>
-    <p>Fields marked in red are important.</p>
+    <p>Fields marked <strong>(required)</strong> must be completed.</p>
 
-    <form action="#" method="post">
+    <!-- Error Summary Box -->
+    <div id="error-summary" role="alert" tabindex="-1" style="display:none; border: 2px solid red; padding: 10px; margin-bottom: 20px;">
+        <h3>There is a problem</h3>
+        <ul id="error-list"></ul>
+    </div>
+
+    <form id="enquiry-form" action="#" method="post" novalidate>
         <div>
-            <label for="car">Vehicle</label>
-            <select id="car" name="car">
+            <label for="car">Vehicle (required)</label>
+            <select id="car" name="car" required>
                 <option value="">Choose a vehicle</option>
-                <option>2019 Hatch 1.0</option>
-                <option>2020 Trail 1.5</option>
-                <option>2018 Audi S4</option>
-                <option>2021 City-e</option>
+                <option value="2019 Hatch 1.0">2019 Hatch 1.0</option>
+                <option value="2020 Trail 1.5">2020 Trail 1.5</option>
+                <option value="2018 Audi S4">2018 Audi S4</option>
+                <option value="2021 City-e">2021 City-e</option>
             </select>
+            <span class="error-msg" id="car-error" style="color:red; display:none;">Please choose a vehicle.</span>
         </div>
 
         <div>
-            <span>Full name</span>
-            <input type="text" name="name" placeholder="e.g. Dave Smith">
+            <label for="name">Full name (required)</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Dave Smith" autocomplete="name" required>
+            <span class="error-msg" id="name-error" style="color:red; display:none;">Please enter your full name.</span>
         </div>
 
         <div>
-            <label for="email">Email address</label>
-            <input type="text" id="email" name="email">
+            <label for="email">Email address (required)</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <span class="error-msg" id="email-error" style="color:red; display:none;">Please enter a valid email address.</span>
         </div>
 
         <div>
-            <label for="phone">Telephone</label>
-            <input type="text" id="phone" name="phone">
+            <label for="phone">Telephone (optional)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
         </div>
 
         <div>
-            <label for="message">Your message</label>
-            <textarea id="message" name="message">Tell us what you would like to know...</textarea>
+            <label for="message">Your message (optional)</label>
+            <textarea id="message" name="message" placeholder="Tell us what you would like to know..."></textarea>
         </div>
 
         <div>
             <input type="checkbox" id="updates" name="updates">
-            <span>Send me occasional offers and updates</span>
+            <label for="updates" style="display:inline;">Send me occasional offers and updates</label>
         </div>
 
-        <div>
-            <label>Preferred contact method</label>
-            <div>
-                <input type="radio" name="contact" value="email"> Email
-                <input type="radio" name="contact" value="phone"> Phone
-            </div>
-        </div>
+        <fieldset>
+            <legend>Preferred contact method (required)</legend>
+            <input type="radio" id="contact-email" name="contact" value="email" required>
+            <label for="contact-email" style="display:inline;">Email</label>
+            
+            <input type="radio" id="contact-phone" name="contact" value="phone">
+            <label for="contact-phone" style="display:inline;">Phone</label>
+            <span class="error-msg" id="contact-error" style="color:red; display:none;">Please choose how you would like us to contact you.</span>
+        </fieldset>
 
         <button type="submit">SUBMIT</button>
     </form>
 
-    <p>We aim to respond within two working days.</p>
+    <p id="form-status" role="status" tabindex="-1" style="display:none; color: green; font-weight: bold;">Thank you. Your enquiry has been sent.</p>
 </main>
 
 <footer>
